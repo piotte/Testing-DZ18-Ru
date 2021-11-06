@@ -1,4 +1,4 @@
-# DZ18-19-20  Симулятор игры
+# DZ18-19-20-21-22  Симулятор игры
 
 Игра “Зелёный цвет, красный цвет”.
 
@@ -7,3 +7,4 @@
 Now with array of strings "name speed"
 Now with non-static fields and methods, constructor added
 Now private and more
+Now GameManager managing the game
