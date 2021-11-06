@@ -1,3 +1,4 @@
+import ru.learnup.javaqa.qa_dz18_mvn.logic.Game;
 import ru.learnup.javaqa.qa_dz18_mvn.logic.GameCore;
 
 import java.util.Arrays;

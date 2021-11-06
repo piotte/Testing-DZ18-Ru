@@ -1,4 +1,4 @@
-# DZ18-19  Симулятор игры
+# DZ18-19-20  Симулятор игры
 
 Игра “Зелёный цвет, красный цвет”.
 
@@ -6,3 +6,4 @@
 Если горит красным, то все двигающиеся игроки выбывают.
 Now with array of strings "name speed"
 Now with non-static fields and methods, constructor added
+Now private and more
