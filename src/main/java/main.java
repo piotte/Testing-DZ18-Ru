@@ -5,7 +5,13 @@ import java.util.Arrays;
 class Main {
     public static void main(String[] args) {
 
-        int[] playersSpeed = { 5, 0, 2 };
+        String[] players = {
+                "Pikachu 11",
+                "Vanya -21",
+                "Petya -10",
+                "Pak-kin-cho 1",
+                "Number 0",
+        };
 
         // Допишите здесь логику так, что будет подсчитано и выведено
         // количество игроков, которые выбывают.
@@ -13,8 +19,7 @@ class Main {
         // Если свет красный, то выбывает каждый, чья скорость не 0.
 
 
-        System.out.println("Количество выбывших игроков: " + GameCore.numberOfPlayerOut(playersSpeed));
-        System.out.println("Выбыли игроки со скоростями: " + Arrays.toString(GameCore.playersOut(playersSpeed)));
-        System.out.println("Остались игроки со скоростями: " + Arrays.toString(GameCore.playersRemain(playersSpeed)));
+        System.out.println("Входные данные: " + Arrays.toString(players));
+        System.out.println("Имена выживших игроков: " + Arrays.toString(GameCore.playersRemainNames(players)));
     }
 }

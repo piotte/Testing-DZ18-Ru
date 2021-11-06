@@ -44,4 +44,48 @@ public class GameCore {
         }
         return remains;
     }
+
+
+    /*
+    public static String[] playersRemainNames(String[] players){
+        String stringOfNames = "";
+        for (String player : players){
+            String[] tempo = player.split(" ");
+            int speed = Integer.parseInt(tempo[1]);
+            if (!isPlayerOut(speed)) {
+                stringOfNames  += tempo[0] + " ";
+            }
+        }
+        if(stringOfNames == ""){
+            String[] nullRes = {};
+            return nullRes;
+        }
+        else
+        {
+            return stringOfNames.split(" ");
+        }
+    }
+    */
+
+    public static String[] playersRemainNames(String[] players){
+        int[] speeds = new int[players.length];
+        for (int i = 0; i < players.length; i++){
+            String[] tempo = players[i].split(" ");
+            speeds[i] = Integer.parseInt(tempo[1]);
+        }
+        int numberOfSurvivers = players.length - numberOfPlayerOut(speeds);
+        String[] result = new String[numberOfSurvivers];
+
+        int pos = 0;
+        for (String player : players){
+            String[] tempo = player.split(" ");
+            int speed = Integer.parseInt(tempo[1]);
+            if (!isPlayerOut(speed)) {
+                result[pos] = tempo[0];
+                pos++;
+            }
+        }
+
+        return result;
+    }
 }

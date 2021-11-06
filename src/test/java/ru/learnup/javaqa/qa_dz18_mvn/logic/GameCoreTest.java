@@ -242,4 +242,96 @@ class GameCoreTest {
         Assertions.assertTrue(result, "Expected result is empty array, greenLight: "+ GameCore.isGreenLight);
     }
 
+    @Test
+    public void correctPlayersRemainNamesRedLight(){
+        GameCore.isGreenLight = false;
+        GameCore.MAX_SPEED = 10;
+        String[] players = {
+                "Pikachu 11",
+                "Vanya -21",
+                "Petya -10",
+                "Pak-kin-cho 1",
+                "Number 0",
+        };
+
+        String[] actual = GameCore.playersRemainNames(players);
+        String[] expected = {
+                "Petya",
+                "Pak-kin-cho",
+                "Number",
+        };
+
+        boolean result = Arrays.equals(actual, expected);
+        Assertions.assertTrue(result, "Expected result hardcoded, greenLight: "+ GameCore.isGreenLight);
+    }
+
+    @Test
+    public void nonePlayersRemainNamesRedLight(){
+        GameCore.isGreenLight = false;
+        GameCore.MAX_SPEED = 10;
+        String[] players = {
+                "Pikachu 11",
+                "Vanya -21",
+                "Petya -111",
+                "Pak-kin-cho 111",
+                "Number 110",
+        };
+
+        String[] actual = GameCore.playersRemainNames(players);
+        String[] expected = {};
+
+        Assertions.assertArrayEquals(expected, actual,
+                "Expected empty array, actual: " + Arrays.toString(actual) + " , expected " + Arrays.toString(expected ));
+    }
+
+    @Test
+    public void allPlayersRemainNamesRedLight(){
+        GameCore.isGreenLight = false;
+        GameCore.MAX_SPEED = 10;
+        String[] players = {
+                "Pikachu 1",
+                "Vanya -2",
+                "Petya -1",
+                "Pak-kin-cho 6",
+                "Number 0"
+        };
+
+        String[] actual = GameCore.playersRemainNames(players);
+        String[] expected = {
+                "Pikachu",
+                "Vanya",
+                "Petya",
+                "Pak-kin-cho",
+                "Number"
+        };
+
+        Assertions.assertArrayEquals(expected, actual,
+                "Expected array of all names, actual: " + Arrays.toString(actual) + " , expected " + Arrays.toString(expected ));
+    }
+
+    @Test
+    public void allPlayersRemainNamesGreenLight(){
+        GameCore.isGreenLight = true;
+        GameCore.MAX_SPEED = 10;
+        String[] players = {
+                "Pikachu 100",
+                "Vanya -2",
+                "Petya -100",
+                "Pak-kin-cho 666",
+                "Number 0"
+        };
+
+        String[] actual = GameCore.playersRemainNames(players);
+        String[] expected = {
+                "Pikachu",
+                "Vanya",
+                "Petya",
+                "Pak-kin-cho",
+                "Number"
+        };
+
+        Assertions.assertArrayEquals(expected, actual,
+                "Expected array of all names, actual: " + Arrays.toString(actual) + " , expected " + Arrays.toString(expected ));
+    }
+
 }
