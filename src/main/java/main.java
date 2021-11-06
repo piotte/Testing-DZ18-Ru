@@ -17,9 +17,9 @@ class Main {
         // количество игроков, которые выбывают.
         // Если свет зелёный, то проходят все игроки (0 выбывают).
         // Если свет красный, то выбывает каждый, чья скорость не 0.
-
+        GameCore gameCore = new GameCore(false, 10);
 
         System.out.println("Входные данные: " + Arrays.toString(players));
-        System.out.println("Имена выживших игроков: " + Arrays.toString(GameCore.playersRemainNames(players)));
+        System.out.println("Имена выживших игроков: " + Arrays.toString(gameCore.playersRemainNames(players)));
     }
 }
