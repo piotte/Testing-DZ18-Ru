@@ -83,4 +83,83 @@ public class GameManagerTest {
         Assertions.assertEquals(expected, actual, "Expected 2 rounds due to speedy game rules and speed over limit in 3 round");
     }
 
+    @Test
+    public void firstPlayerWinClassicGame(){
+        Game game = new Game(false);
+        GameManager gameManager = new GameManager(game);
+        ConstantPlayer First = new ConstantPlayer(0);
+        FastPlayer Second = new FastPlayer(1, 2);
+
+        int actual = gameManager.loser(First, Second, game, 5);
+        int expected = 1;
+
+        Assertions.assertEquals(expected, actual, "Expected 1 as first player win");
+    }
+
+    @Test
+    public void secondPlayerWinClassicGame(){
+        Game game = new Game(false);
+        GameManager gameManager = new GameManager(game);
+        ConstantPlayer First = new ConstantPlayer(4);
+        FastPlayer Second = new FastPlayer(0, 0);
+
+        int actual = gameManager.loser(First, Second, game, 5);
+        int expected = -1;
+
+        Assertions.assertEquals(expected, actual, "Expected -1 as second player win");
+    }
+
+    @Test
+    public void bothPlayersWinClassicGame(){
+        Game game = new Game(false);
+        GameManager gameManager = new GameManager(game);
+        ConstantPlayer First = new ConstantPlayer(0);
+        FastPlayer Second = new FastPlayer(0, 0);
+
+        int actual = gameManager.loser(First, Second, game, 5);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual, "Expected 0 as both players survive");
+    }
+
+    @Test
+    public void firstPlayerWinSpeedyGame(){
+        SpeedyGame speedyGame = new SpeedyGame(false, 10);
+        GameManager gameManager = new GameManager(speedyGame);
+        ConstantPlayer First = new ConstantPlayer(9);
+        FastPlayer Second = new FastPlayer(4, 5);
+
+        int actual = gameManager.loser(First, Second, speedyGame, 5);
+        int expected = 1;
+
+        Assertions.assertEquals(expected, actual, "Expected 1 as first player win");
+    }
+
+
+    @Test
+    public void secondPlayerWinSpeedyGame(){
+        SpeedyGame speedyGame = new SpeedyGame(false, 10);
+        GameManager gameManager = new GameManager(speedyGame);
+        ConstantPlayer First = new ConstantPlayer(19);
+        FastPlayer Second = new FastPlayer(4, 5);
+
+        int actual = gameManager.loser(First, Second, speedyGame, 5);
+        int expected = -1;
+
+        Assertions.assertEquals(expected, actual, "Expected -1 as second player win");
+    }
+
+    @Test
+    public void bothPlayersWinSpeedyGame(){
+        SpeedyGame speedyGame = new SpeedyGame(false, 10);
+        GameManager gameManager = new GameManager(speedyGame);
+        ConstantPlayer First = new ConstantPlayer(9);
+        FastPlayer Second = new FastPlayer(4, 1);
+
+        int actual = gameManager.loser(First, Second, speedyGame, 5);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual, "Expected 0 as both players don't lose");
+    }
+
 }
