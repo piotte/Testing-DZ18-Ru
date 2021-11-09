@@ -1,19 +1,20 @@
-import ru.learnup.javaqa.qa_dz18_mvn.logic.*;
+import ru.learnup.javaqa.qa_dz18_mvn.logic.GameCore;
 
 import java.util.Arrays;
 
 class Main {
     public static void main(String[] args) {
 
-        SpeedyGame speedyGame = new SpeedyGame(false, 10);
-        GameManager gameManager = new GameManager(speedyGame);
-        ConstantPlayer Ali = new ConstantPlayer(9);
-        FastPlayer SunMoonDon = new FastPlayer(1, 2);
+        int[] playersSpeed = { 5, 0, 2 };
 
-        if (gameManager.loser(Ali, SunMoonDon, speedyGame, 5) == 0) {
-            System.out.println("Good new everyone alive");
-        } else {
-            System.out.println("Good new prize increased");
-        }
+        // Допишите здесь логику так, что будет подсчитано и выведено
+        // количество игроков, которые выбывают.
+        // Если свет зелёный, то проходят все игроки (0 выбывают).
+        // Если свет красный, то выбывает каждый, чья скорость не 0.
+
+
+        System.out.println("Количество выбывших игроков: " + GameCore.numberOfPlayerOut(playersSpeed));
+        System.out.println("Выбыли игроки со скоростями: " + Arrays.toString(GameCore.playersOut(playersSpeed)));
+        System.out.println("Остались игроки со скоростями: " + Arrays.toString(GameCore.playersRemain(playersSpeed)));
     }
 }
